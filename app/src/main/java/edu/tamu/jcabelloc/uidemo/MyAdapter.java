@@ -1,5 +1,7 @@
 package edu.tamu.jcabelloc.uidemo;
 
+import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,7 +18,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         // each data item is just a string in this case
         public TextView mTextView;
 
@@ -32,6 +34,23 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             super(view);
             productIconView = view.findViewById(R.id.product_icon);
             productNameView = view.findViewById(R.id.product_name);
+
+            view.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            int adapterPosition = getAdapterPosition();
+            String productName = mDataset[adapterPosition];
+
+            //TextView tv = (TextView)view.findViewById(R.id.product_name);
+            //tv.setText("Selected");
+            //view.setBackgroundResource(R.color.activated);
+
+            boolean activate = (view.isActivated())? false : true;
+            view.setActivated(activate);
+
+            Log.d("Selected Product: ", adapterPosition + " - " + productName);
         }
     }
 
