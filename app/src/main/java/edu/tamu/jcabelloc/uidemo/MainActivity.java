@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG).setAction("Action", null).show();
-                Intent intent = new Intent(getApplicationContext(), MyOtherCart.class);
+                Intent intent = new Intent(getApplicationContext(), MySecondCart.class);
                 startActivity(intent);
             }
         });
