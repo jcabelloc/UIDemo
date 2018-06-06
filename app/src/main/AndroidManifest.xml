@@ -42,17 +42,22 @@
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
-            <meta-data android:name="android.app.searchable"
-                android:resource="@xml/searchable"/>
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
         </activity>
         <activity
             android:name=".MyCart"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".MainActivity">
             <!-- enable the search dialog to send searches to SearchableActivity -->
-            <meta-data android:name="android.app.default_searchable"
+            <meta-data
+                android:name="android.app.default_searchable"
                 android:value=".SearchableActivity" />
         </activity>
-
+        <activity android:name=".MyOtherCart"
+            android:parentActivityName=".MainActivity">
+        </activity>
     </application>
 
 </manifest>
