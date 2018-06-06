@@ -29,13 +29,30 @@
             android:name=".Main4Activity"
             android:label="@string/title_activity_main4"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".MyChildActivity"
-            android:parentActivityName="edu.tamu.jcabelloc.uidemo.MainActivity">
+        <activity
+            android:name=".MyChildActivity"
+            android:parentActivityName=".MainActivity">
+
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="edu.tamu.jcabelloc.uidemo.MainActivity" />
         </activity>
+        <activity android:name=".SearchableActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+            <meta-data android:name="android.app.searchable"
+                android:resource="@xml/searchable"/>
+        </activity>
+        <activity
+            android:name=".MyCart"
+            android:parentActivityName=".MainActivity" >
+            <!-- enable the search dialog to send searches to SearchableActivity -->
+            <meta-data android:name="android.app.default_searchable"
+                android:value=".SearchableActivity" />
+        </activity>
+
     </application>
 
 </manifest>
