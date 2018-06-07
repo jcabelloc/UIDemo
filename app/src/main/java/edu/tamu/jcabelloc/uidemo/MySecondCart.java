@@ -3,6 +3,7 @@ package edu.tamu.jcabelloc.uidemo;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.provider.SearchRecentSuggestions;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -57,7 +58,9 @@ public class MySecondCart extends AppCompatActivity {
     private void handleIntent(Intent intent) {
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
-            Log.d("Search inside newIntent" ,query );;
+            Log.d("Search inside newIntent" ,query );
+            SearchRecentSuggestions suggestions = new SearchRecentSuggestions(this, MySuggestionProvider.AUTHORITY, MySuggestionProvider.MODE);
+            suggestions.saveRecentQuery(query, null);
         }
     }
 
