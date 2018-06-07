@@ -58,9 +58,28 @@
         </activity>
         <activity
             android:name=".MyOtherCart"
-            android:parentActivityName=".MainActivity"></activity>
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".MySecondCart"
+            android:launchMode="singleTop"
+            android:parentActivityName=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
 
-        <activity android:name=".MySecondCart"
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+        </activity>
+
+        <provider
+            android:name=".MySuggestionProvider"
+            android:authorities="edu.tamu.jcabelloc.uidemo.MySuggestionProvider" />
+        <provider
+            android:name=".MyCustomSuggestionProvider"
+            android:authorities="edu.tamu.jcabelloc.uidemo.provider.MyCustomSuggestionProvider" />
+
+        <activity android:name=".CustomSuggestions"
             android:launchMode="singleTop"
             android:parentActivityName=".MainActivity">
             <intent-filter>
@@ -68,11 +87,8 @@
             </intent-filter>
             <meta-data
                 android:name="android.app.searchable"
-                android:resource="@xml/searchable"/>
+                android:resource="@xml/customsearchable" />
         </activity>
-        <provider android:name=".MySuggestionProvider"
-            android:authorities="edu.tamu.jcabelloc.uidemo.MySuggestionProvider" />
     </application>
-
 
 </manifest>
