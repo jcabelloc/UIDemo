@@ -3,6 +3,7 @@ package edu.tamu.jcabelloc.uidemo;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.provider.SearchRecentSuggestions;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.SearchView;
+
 
 public class CustomSuggestions extends AppCompatActivity {
 
@@ -47,8 +49,17 @@ public class CustomSuggestions extends AppCompatActivity {
     private void handleIntent(Intent intent) {
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
-            Log.d("Search inside newIntent" ,query );
-
+            String intentDataString = intent.getDataString();
+            Uri intentData = intent.getData();
+            if (query != null) {
+                Log.d("Query" ,query );
+            }
+            if (intentDataString != null) {
+                Log.d("intentDataString" ,intentDataString);
+            }
+            if (intentData != null) {
+                Log.d("intentData", intentData.toString());
+            }
         }
     }
 

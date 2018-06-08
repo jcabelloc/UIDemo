@@ -28,14 +28,14 @@ public class MyCustomSuggestionProvider extends ContentProvider {
          * Sets the integer value for multiple rows in table 3 to 1. Notice that no wildcard is used
          * in the path
          */
-        uriMatcher.addURI("edu.tamu.jcabelloc.uidemo.provider", "product", 1);
+        uriMatcher.addURI("edu.tamu.jcabelloc.uidemo.provider.MyCustomSuggestionProvider", "product", 1);
 
         /*
          * Sets the code for a single row to 2. In this case, the "#" wildcard is
          * used. "content://com.example.app.provider/table3/3" matches, but
          * "content://com.example.app.provider/table3 doesn't.
          */
-        uriMatcher.addURI("edu.tamu.jcabelloc.uidemo.provider", "product/#", 2);
+        uriMatcher.addURI("edu.tamu.jcabelloc.uidemo.provider.MyCustomSuggestionProvider", "product/#", 2);
     }
 
     @Override
@@ -50,6 +50,7 @@ public class MyCustomSuggestionProvider extends ContentProvider {
          * Choose the table to query and a sort order based on the code returned for the incoming
          * URI. Here, too, only the statements for table 3 are shown.
          */
+        Log.d("URI", uri.toString());
         Log.d("projection: ", Arrays.toString(projection));
         Log.d("selection: ", selection);
         Log.d("selectionArgs: ", Arrays.toString(selectionArgs));
@@ -78,12 +79,12 @@ public class MyCustomSuggestionProvider extends ContentProvider {
                 // If the URI is not recognized, you should do some error handling here.
         }
         // call the code to actually do the query
-        String[] columNames = {"_id", "suggest_text_1", "suggest_text_2" };
+        String[] columNames = {"_id", "suggest_text_1", "suggest_text_2", /*"suggest_intent_data",*/ "suggest_intent_data_id"};
         MatrixCursor cursor = new MatrixCursor(columNames);
-        cursor.addRow(new String[]{"1", "product 1", "Product Description 1"});
-        cursor.addRow(new String[]{"2", "product 2", "Product Description 2"});
-        cursor.addRow(new String[]{"3", "product 3", "Product Description 3"});
-        cursor.addRow(new String[]{"4", "product 4", "Product Description 4"});
+        cursor.addRow(new String[]{"1", "product 1", "Product Description 1", /*"01",*/ "0001"});
+        cursor.addRow(new String[]{"2", "product 2", "Product Description 2", /*"02",*/ "0002"});
+        cursor.addRow(new String[]{"3", "product 3", "Product Description 3", /*"03",*/ "0003"});
+        cursor.addRow(new String[]{"4", "product 4", "Product Description 4", /*"04",*/ "0004"});
 
         return cursor;
 

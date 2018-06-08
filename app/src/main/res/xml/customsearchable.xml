@@ -3,5 +3,6 @@
     android:label="@string/app_name"
     android:hint="@string/custom_search_hint"
     android:searchSuggestAuthority="edu.tamu.jcabelloc.uidemo.provider.MyCustomSuggestionProvider"
-    android:searchSuggestSelection="product MATCH ?">
+    android:searchSuggestSelection="product MATCH ?"
+    android:searchSuggestIntentData="content://edu.tamu.jcabelloc.uidemo.provider.MyCustomSuggestionProvider/product">
 </searchable>
